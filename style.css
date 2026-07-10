@@ -207,3 +207,30 @@ body {
         grid-template-columns: 1fr;
     }
 }
+/* ألوان الوضع الليلي الذكي */
+body.dark-theme {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1e1e1e;
+    --nav-bg: #1e1e1e;
+    --shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+body.dark-theme .search-box {
+    background: #2a2a2a;
+}
+body.dark-theme .search-box input {
+    background: #2a2a2a;
+    color: white;
+}
+body.dark-theme .nav-links a {
+    color: #e0e0e0;
+}
+body.dark-theme .section-card p {
+    color: #bbb;
+}
+body.dark-theme .section-card h3 {
+    color: #fff;
+}
+body.dark-theme .section-title {
+    color: #fff;
+}
