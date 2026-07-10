@@ -3,96 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منصة العلوم التعليمية</title>
+    <title>الطلاب المجتهدون - في مادة العلوم</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0072ce;
+            --accent: #ff9800;
+            --bg-light: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-dark: #2c3e50;
+            --shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            padding: 0;
+            color: var(--text-dark);
+        }
+
+        /* الشريط العلوي */
+        .top-nav {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .brand-logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* الواجهة الترحيبية */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            background: linear-gradient(135deg, #0072ce 0%, #004080 100%);
+            color: white;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+        }
+        .hero h2 {
+            font-size: 1.6rem;
+            margin: 0 0 25px 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: var(--shadow);
+        }
+
+        /* قسم أوائل الطلبة */
+        .leaderboard-section {
+            max-width: 1100px;
+            margin: 40px auto 20px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+        .top-students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .student-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--accent);
+        }
+        .badge-icon {
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        /* شجرة الصفوف الدراسية */
+        .curriculum-section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .grade-box {
+            background: var(--card-bg);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .grade-header {
+            padding: 18px 25px;
+            background: var(--card-bg);
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        .grade-header:hover {
+            background: #eef5fc;
+        }
+        .grade-content {
+            display: none;
+            padding: 15px 25px;
+            background: #fafafa;
+            border-top: 1px solid #eee;
+        }
+
+        /* تفريع الترام والوحدات والدروس */
+        .term-title {
+            font-weight: bold;
+            color: var(--primary);
+            margin: 15px 0 10px 0;
+            font-size: 1.1rem;
+        }
+        .unit-box {
+            margin-right: 15px;
+            margin-bottom: 10px;
+        }
+        .unit-title {
+            font-weight: 600;
+            color: #555;
+            cursor: pointer;
+            padding: 8px 0;
+        }
+        .lessons-list {
+            display: none;
+            margin-right: 20px;
+            list-style: none;
+            padding: 0;
+        }
+        .lesson-item {
+            background: #fff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        .lesson-name {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .resource-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .res-btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-summary { background-color: #28a745; }
+        .btn-exam { background-color: #0072ce; }
+        .btn-bank { background-color: #6f42c1; }
+        .btn-video { background-color: #dc3545; }
+
+        .active-display { display: block !important; }
+    </style>
 </head>
 <body>
 
+    <!-- الشريط العلوي -->
     <header class="top-nav">
         <div class="nav-container">
-            <div class="logo-zone">
-                <span class="platform-name">منصة العلوم</span>
-            </div>
-            
-            <nav class="nav-links">
-                <a href="#home" class="nav-item active"><i class="fas fa-home"></i> الرئيسية</a>
-                <a href="#summaries" class="nav-item"><i class="fas fa-book"></i> الملخصات</a>
-                <a href="#exams" class="nav-item"><i class="fas fa-pen-to-square"></i> الاختبارات</a>
-                <a href="#q-bank" class="nav-item"><i class="fas fa-book-open"></i> بنك الأسئلة</a>
-                <a href="#videos" class="nav-item"><i class="fas fa-video"></i> الفيديوهات</a>
-                <a href="#contact" class="nav-item"><i class="fas fa-phone"></i> تواصل معنا</a>
-            </nav>
-
-            <div class="nav-controls">
-                <button id="theme-toggle" class="theme-btn">
-                    <i class="fas fa-moon"></i>
-                </button>
+            <div class="brand-logo"> منصة العلوم الرقمية</div>
+            <div>
+                <a href="#curriculum" style="text-decoration:none; font-weight:bold; color:var(--primary);">الصفوف الدراسية</a>
             </div>
         </div>
     </header>
 
-    <section id="home" class="hero-section">
-        <div class="hero-content">
-            <h1>مرحباً بك في منصة العلوم الرقمية</h1>
-            <p>طريقك الذكي للتفوق وفهم العلوم ببساطة</p>
-            
-            <div class="search-box">
-                <input type="text" id="main-search" placeholder="ابحث عن: (الطاقة، الجهاز الهضمي، اختبار الصف الرابع...)">
-                <button id="search-btn"><i class="fas fa-magnifying-glass"></i></button>
+    <!-- الواجهة الترحيبية -->
+    <section class="hero">
+        <h1>الطلاب المجتهدون</h1>
+        <h2>في مادة العلوم</h2>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="ابحث عن درس، وحدة، أو صف دراسي...">
+        </div>
+    </section>
+
+    <!-- لوحة شرف أوائل الطلبة -->
+    <section class="leaderboard-section">
+        <h2 class="section-title">🏆 أوائل الطلبة المتفوقين</h2>
+        <div class="top-students-grid">
+            <div class="student-card">
+                <i class="fas fa-trophy badge-icon"></i>
+                <h3>أحمد محمد</h3>
+                <p>الصف الرابع الابتدائي</p>
+            </div>
+            <div class="student-card">
+                <i class="fas fa-medal badge-icon" style="color: #c0c0c0;"></i>
+                <h3>مريم علي</h3>
+                <p>الصف السادس الابتدائي</p>
+            </div>
+            <div class="student-card">
+                <i class="fas fa-award badge-icon" style="color: #cd7f32;"></i>
+                <h3>عمر محمود</h3>
+                <p>الصف الأول الإعدادي</p>
             </div>
         </div>
     </section>
 
-    <main class="main-content">
-        <div class="container">
-            <h2 class="section-title">أقسام المنصة</h2>
-            <div class="grid-cards">
-                
-               <a href="summaries.html" style="text-decoration: none; color: inherit; display: block;">
-            <div class="section-card">
-                <div class="card-icon"><i class="fas fa-book-bookmark"></i></div>
-                <h3>📚 الملخصات</h3>
-                <p>شرح مبسط ومقروء لكل دروس العلوم خطوة بخطوة.</p>
+    <!-- أقسام الصفوف الدراسية الشجرية -->
+    <section class="curriculum-section" id="curriculum">
+        <h2 class="section-title">📚 اختر الصف الدراسي</h2>
+
+        <!-- الصف الرابع الابتدائي -->
+        <div class="grade-box">
+            <div class="grade-header" onclick="toggleElement('grade4')">
+                <span>4️⃣ الصف الرابع الابتدائي</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
-        </a>
-                <div class="section-card">
-                    <div class="card-icon"><i class="fas fa-file-signature"></i></div>
-                    <h3>📝 الاختبارات الإلكترونية</h3>
-                    <p>تحدَّ نفسك واعرف درجتك فوراً مع التصحيح التلقائي.</p>
-                </div>
-
-                <div class="section-card">
-                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h3>📖 بنك الأسئلة</h3>
-                    <p>مجموعة شاملة من الأسئلة المتنوعة لضمان التميز.</p>
-                </div>
-
-                <div class="section-card">
-                    <div class="card-icon"><i class="fas fa-play-circle"></i></div>
-                    <h3>🎥 الفيديوهات</h3>
-                    <p>شروحات مرئية وتجارب علمية ممتعة ومتحركة.</p>
-                </div>
-
-                <div class="section-card">
-                    <div class="card-icon"><i class="fas fa-file-pdf"></i></div>
-                    <h3>📄 ملفات PDF</h3>
-                    <p>تحميل وتنزيل المذكرات والملخصات الجاهزة للطباعة.</p>
-                </div>
-
-                <div class="section-card">
-                    <div class="card-icon"><i class="fas fa-trophy"></i></div>
-                    <h3>🏆 أوائل الطلاب</h3>
-                    <p>لوحة الشرف للاحتفاء بالطلاب المتميزين في الاختبارات.</p>
+            <div id="grade4" class="grade-content">
+                
+                <!-- الترم الأول -->
+                <div class="term-title">🗓️ الفصل الدراسي الأول</div>
+                
+                <!-- الوحدة الأولى -->
+                <div class="unit-box">
+                    <div class="unit-title" onclick="toggleElement('unit4-1')">📂 الوحدة الأولى: الأنظمة الحية</div>
+                    <ul id="unit4-1" class="lessons-list">
+                        <li class="lesson-item">
+                            <div class="lesson-name">📄 الدرس الأول: التكيف والبقاء</div>
+                            <div class="resource-buttons">
+                                <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
+                                <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
+                                <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
+                                <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
 
             </div>
         </div>
-    </main>
 
-    <footer class="main-footer">
-        <p>جميع الحقوق محفوظة &copy; 2026 | إعداد الأستاذ أبو عمرو</p>
-    </footer>
+        <!-- الصف الخامس الابتدائي -->
+        <div class="grade-box">
+            <div class="grade-header" onclick="toggleElement('grade5')">
+                <span>5️⃣ الصف الخامس الابتدائي</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+            <div id="grade5" class="grade-content">
+                <div class="term-title">🗓️ الفصل الدراسي الأول</div>
+                <div class="unit-box">
+                    <div class="unit-title" onclick="toggleElement('unit5-1')">📂 الوحدة الأولى: العلاقات بين الكائنات الحية</div>
+                    <ul id="unit5-1" class="lessons-list">
+                        <li class="lesson-item">
+                            <div class="lesson-name">📄 الدرس الأول: احتياجات النبات</div>
+                            <div class="resource-buttons">
+                                <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
+                                <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
+                                <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
+                                <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
+        <!-- باقي الصفوف بنفس الطريقة (السادس، الأول/الثاني/الثالث الإعدادي) -->
+        <div class="grade-box"><div class="grade-header"><span>6️⃣ الصف السادس الابتدائي</span><i class="fas fa-chevron-down"></i></div></div>
+        <div class="grade-box"><div class="grade-header"><span>1️⃣ الصف الأول الإعدادي</span><i class="fas fa-chevron-down"></i></div></div>
+        <div class="grade-box"><div class="grade-header"><span>2️⃣ الصف الثاني الإعدادي</span><i class="fas fa-chevron-down"></i></div></div>
+        <div class="grade-box"><div class="grade-header"><span>3️⃣ الصف الثالث الإعدادي</span><i class="fas fa-chevron-down"></i></div></div>
+
+    </section>
+
+    <script>
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.toggle('active-display');
+            }
+        }
+    </script>
 </body>
 </html>
