@@ -113,111 +113,118 @@
             margin-bottom: 10px;
         }
 
-        /* شجرة المناهج الدراسية */
+        /* شجرة المناهج الدراسية والمراحل */
         .curriculum-section {
-            max-width: 950px;
+            max-width: 1100px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        /* كروت المراحل الدراسية الرئيسية */
-        .stage-card {
-            background: var(--card-bg);
-            border-radius: 18px;
-            margin-bottom: 30px;
-            box-shadow: var(--shadow);
-            border: 2px solid #e1e8ed;
-            overflow: hidden;
+        .stage-container {
+            margin-bottom: 40px;
         }
-        .stage-header {
-            background: #eef5fc;
-            padding: 20px 25px;
+        .stage-title {
             font-size: 1.4rem;
             font-weight: bold;
             color: var(--primary);
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            border-bottom: 2px solid #d0e2f5;
+            gap: 10px;
+            border-bottom: 2px solid #e1e8ed;
+            padding-bottom: 8px;
         }
 
-        /* الصفوف الدراسية داخل المرحلة */
-        .grade-box {
-            border-bottom: 1px solid #f0f0f0;
+        /* شبكة الصفوف الأفقية المتجاورة */
+        .grades-horizontal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
-        .grade-box:last-child {
-            border-bottom: none;
+
+        .grade-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         .grade-header {
-            padding: 16px 25px;
-            font-size: 1.15rem;
+            padding: 18px 20px;
+            background: #f8fafc;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid #edf2f7;
             transition: background 0.2s;
         }
         .grade-header:hover {
-            background: #f8fafc;
+            background: #eef5fc;
         }
         .grade-content {
             display: none;
-            padding: 15px 30px;
-            background: #fafafa;
-            border-top: 1px dashed #e2e8f0;
+            padding: 15px 20px;
+            background: #ffffff;
         }
 
         /* تفريع الترام والوحدات والدروس */
         .term-title {
             font-weight: bold;
             color: var(--primary);
-            margin: 15px 0 10px 0;
-            font-size: 1.05rem;
+            margin: 10px 0 8px 0;
+            font-size: 1rem;
+            border-right: 3px solid var(--accent);
+            padding-right: 8px;
         }
         .unit-box {
-            margin-right: 15px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .unit-title {
             font-weight: 600;
-            color: #444;
+            color: #4a5568;
             cursor: pointer;
-            padding: 6px 0;
+            padding: 5px 0;
+            font-size: 0.95rem;
         }
         .lessons-list {
             display: none;
-            margin-right: 20px;
+            margin-right: 15px;
             list-style: none;
             padding: 0;
         }
         .lesson-item {
-            background: #fff;
-            padding: 12px 15px;
-            border-radius: 8px;
-            margin-bottom: 8px;
+            background: #f8fafc;
+            padding: 10px 12px;
+            border-radius: 6px;
+            margin-bottom: 6px;
             border: 1px solid #e2e8f0;
         }
         .lesson-name {
             font-weight: bold;
-            margin-bottom: 8px;
-            color: #333;
+            margin-bottom: 6px;
+            color: #2d3748;
+            font-size: 0.9rem;
         }
         .resource-buttons {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
         .res-btn {
-            padding: 6px 12px;
-            border-radius: 6px;
+            padding: 5px 10px;
+            border-radius: 4px;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: bold;
             color: white;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
         }
         .btn-summary { background-color: #28a745; }
         .btn-exam { background-color: #0072ce; }
@@ -234,7 +241,7 @@
         <div class="nav-container">
             <div class="brand-logo">منصة العلوم الرقمية</div>
             <div>
-                <a href="#curriculum" style="text-decoration:none; font-weight:bold; color:var(--primary);">المراحل الدراسية</a>
+                <a href="#curriculum" style="text-decoration:none; font-weight:bold; color:var(--primary);">المناهج الدراسية</a>
             </div>
         </div>
     </header>
@@ -270,119 +277,126 @@
         </div>
     </section>
 
-    <!-- أقسام المراحل المحددة والصفوف الدراسية -->
+    <!-- أقسام المراحل والصفوف الأفقية -->
     <section class="curriculum-section" id="curriculum">
-        <h2 class="section-title">📚 اختر المرحلة الدراسية</h2>
-
-        <!-- 🏫 1. المرحلة الابتدائية -->
-        <div class="stage-card">
-            <div class="stage-header">
+        
+        <!-- 🏫 أولاً: المرحلة الابتدائية -->
+        <div class="stage-container">
+            <div class="stage-title">
                 <i class="fas fa-child"></i> المرحلة الابتدائية
             </div>
-
-            <!-- الصف الرابع -->
-            <div class="grade-box">
-                <div class="grade-header" onclick="toggleElement('grade4')">
-                    <span>🔹 الصف الرابع الابتدائي</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div id="grade4" class="grade-content">
-                    <div class="term-title">🗓️ الفصل الدراسي الأول</div>
-                    <div class="unit-box">
-                        <div class="unit-title" onclick="toggleElement('unit4-1')">📂 الوحدة الأولى: الأنظمة الحية</div>
-                        <ul id="unit4-1" class="lessons-list">
-                            <li class="lesson-item">
-                                <div class="lesson-name">📄 الدرس الأول: التكيف والبقاء</div>
-                                <div class="resource-buttons">
-                                    <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
-                                    <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
-                                    <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
-                                    <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
-                                </div>
-                            </li>
-                        </ul>
+            
+            <div class="grades-horizontal-grid">
+                
+                <!-- الصف الرابع -->
+                <div class="grade-card">
+                    <div class="grade-header" onclick="toggleElement('grade4')">
+                        <span>🔹 الصف الرابع الابتدائي</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div id="grade4" class="grade-content">
+                        <div class="term-title"> الفصل الدراسي الأول</div>
+                        <div class="unit-box">
+                            <div class="unit-title" onclick="toggleElement('unit4-1')">📂 الوحدة الأولى: الأنظمة الحية</div>
+                            <ul id="unit4-1" class="lessons-list">
+                                <li class="lesson-item">
+                                    <div class="lesson-name">📄 الدرس الأول: التكيف والبقاء</div>
+                                    <div class="resource-buttons">
+                                        <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
+                                        <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
+                                        <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
+                                        <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- الصف الخامس -->
-            <div class="grade-box">
-                <div class="grade-header" onclick="toggleElement('grade5')">
-                    <span>🔹 الصف الخامس الابتدائي</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div id="grade5" class="grade-content">
-                    <div class="term-title">🗓️ الفصل الدراسي الأول</div>
-                    <div class="unit-box">
-                        <div class="unit-title" onclick="toggleElement('unit5-1')">📂 الوحدة الأولى: العلاقات بين الكائنات الحية</div>
-                        <ul id="unit5-1" class="lessons-list">
-                            <li class="lesson-item">
-                                <div class="lesson-name">📄 الدرس الأول: احتياجات النبات</div>
-                                <div class="resource-buttons">
-                                    <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
-                                    <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
-                                    <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
-                                    <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
-                                </div>
-                            </li>
-                        </ul>
+                <!-- الصف الخامس -->
+                <div class="grade-card">
+                    <div class="grade-header" onclick="toggleElement('grade5')">
+                        <span>🔹 الصف الخامس الابتدائي</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div id="grade5" class="grade-content">
+                        <div class="term-title"> الفصل الدراسي الأول</div>
+                        <div class="unit-box">
+                            <div class="unit-title" onclick="toggleElement('unit5-1')">📂 الوحدة الأولى: العلاقات بين الكائنات</div>
+                            <ul id="unit5-1" class="lessons-list">
+                                <li class="lesson-item">
+                                    <div class="lesson-name">📄 الدرس الأول: احتياجات النبات</div>
+                                    <div class="resource-buttons">
+                                        <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
+                                        <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
+                                        <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
+                                        <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- الصف السادس -->
-            <div class="grade-box">
-                <div class="grade-header" onclick="toggleElement('grade6')">
-                    <span>🔹 الصف السادس الابتدائي</span>
-                    <i class="fas fa-chevron-down"></i>
+                <!-- الصف السادس -->
+                <div class="grade-card">
+                    <div class="grade-header" onclick="toggleElement('grade6')">
+                        <span>🔹 الصف السادس الابتدائي</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div id="grade6" class="grade-content">
+                        <div class="term-title"> الفصل الدراسي الأول</div>
+                        <p style="color:#777; font-size:0.85rem;">سيتم إضافة الوحدات قريباً...</p>
+                    </div>
                 </div>
-                <div id="grade6" class="grade-content">
-                    <div class="term-title">🗓️ الفصل الدراسي الأول</div>
-                    <p style="color:#777; font-size:0.9rem;">سيتم إضافة الوحدات قريباً...</p>
-                </div>
+
             </div>
         </div>
 
-        <!-- 🏫 2. المرحلة الإعدادية -->
-        <div class="stage-card">
-            <div class="stage-header">
+        <!-- 🏫 ثانياً: المرحلة الإعدادية -->
+        <div class="stage-container">
+            <div class="stage-title">
                 <i class="fas fa-user-graduates"></i> المرحلة الإعدادية
             </div>
+            
+            <div class="grades-horizontal-grid">
+                
+                <!-- الصف الأول الإعدادي -->
+                <div class="grade-card">
+                    <div class="grade-header" onclick="toggleElement('prep1')">
+                        <span>🔸 الصف الأول الإعدادي</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div id="prep1" class="grade-content">
+                        <div class="term-title"> الفصل الدراسي الأول</div>
+                        <p style="color:#777; font-size:0.85rem;">سيتم إضافة الوحدات قريباً...</p>
+                    </div>
+                </div>
 
-            <!-- الصف الأول الإعدادي -->
-            <div class="grade-box">
-                <div class="grade-header" onclick="toggleElement('prep1')">
-                    <span>🔸 الصف الأول الإعدادي</span>
-                    <i class="fas fa-chevron-down"></i>
+                <!-- الصف الثاني الإعدادي -->
+                <div class="grade-card">
+                    <div class="grade-header" onclick="toggleElement('prep2')">
+                        <span>🔸 الصف الثاني الإعدادي</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div id="prep2" class="grade-content">
+                        <div class="term-title"> الفصل الدراسي الأول</div>
+                        <p style="color:#777; font-size:0.85rem;">سيتم إضافة الوحدات قريباً...</p>
+                    </div>
                 </div>
-                <div id="prep1" class="grade-content">
-                    <div class="term-title">🗓️ الفصل الدراسي الأول</div>
-                    <p style="color:#777; font-size:0.9rem;">سيتم إضافة الوحدات قريباً...</p>
-                </div>
-            </div>
 
-            <!-- الصف الثاني الإعدادي -->
-            <div class="grade-box">
-                <div class="grade-header" onclick="toggleElement('prep2')">
-                    <span>🔸 الصف الثاني الإعدادي</span>
-                    <i class="fas fa-chevron-down"></i>
+                <!-- الصف الثالث الإعدادي -->
+                <div class="grade-card">
+                    <div class="grade-header" onclick="toggleElement('prep3')">
+                        <span>🔸 الصف الثالث الإعدادي</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div id="prep3" class="grade-content">
+                        <div class="term-title"> الفصل الدراسي الأول</div>
+                        <p style="color:#777; font-size:0.85rem;">سيتم إضافة الوحدات قريباً...</p>
+                    </div>
                 </div>
-                <div id="prep2" class="grade-content">
-                    <div class="term-title">🗓️ الفصل الدراسي الأول</div>
-                    <p style="color:#777; font-size:0.9rem;">سيتم إضافة الوحدات قريباً...</p>
-                </div>
-            </div>
 
-            <!-- الصف الثالث الإعدادي -->
-            <div class="grade-box">
-                <div class="grade-header" onclick="toggleElement('prep3')">
-                    <span>🔸 الصف الثالث الإعدادي</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div id="prep3" class="grade-content">
-                    <div class="term-title">🗓️ الفصل الدراسي الأول</div>
-                    <p style="color:#777; font-size:0.9rem;">سيتم إضافة الوحدات قريباً...</p>
-                </div>
             </div>
         </div>
 
