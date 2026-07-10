@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الاختبارات الإلكترونية - منصة العلوم</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 120px auto 30px auto;
+            max-width: 800px;
+            padding: 0 20px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 2px solid var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: 0.3s;
+            box-shadow: var(--shadow);
+        }
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+        }
+        .grade-exam {
+            display: none;
+        }
+        .grade-exam.active {
+            display: block;
+        }
+        .question-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+        .question-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+        .option-item {
+            background: rgba(0, 0, 0, 0.03);
+            border: 2px solid transparent;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .option-item:hover {
+            border-color: var(--primary-color);
+        }
+        .option-item.selected {
+            border-color: var(--primary-color);
+            background: rgba(0, 114, 206, 0.1);
+        }
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+        .result-box {
+            display: none;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 20px;
+            box-shadow: var(--shadow);
+            color: var(--primary-color);
+        }
+        .correct {
+            background-color: #d4edda !important;
+            border-color: #28a745 !important;
+            color: #155724 !important;
+        }
+        .wrong {
+            background-color: #f8d7da !important;
+            border-color: #dc3545 !important;
+            color: #721c24 !important;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        body.dark-theme .option-item {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        body.dark-theme .correct {
+            background-color: #1e4620 !important;
+            color: #a3e6a1 !important;
+        }
+        body.dark-theme .wrong {
+            background-color: #58181c !important;
+            color: #f8a5ac !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="platform-name">منصة العلوم الرقمية</div>
+            <div class="nav-links">
+                <a href="index.html">الرئيسية</a>
+                <a href="summaries.html">الملخصات</a>
+                <a href="exams.html" class="active">الاختبارات</a>
+            </div>
+            <button id="theme-toggle" class="theme-btn"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <!-- أزرار اختيار الصف الدراسي -->
+    <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchGradeExam('exam4')">الصف الرابع</button>
+        <button class="tab-btn" onclick="switchGradeExam('exam5')">الصف الخامس</button>
+        <button class="tab-btn" onclick="switchGradeExam('exam6')">الصف السادس</button>
+        <button class="tab-btn" onclick="switchGradeExam('exam1prep')">الأول الإعدادي</button>
+    </div>
+
+    <!-- حاوية الأسئلة -->
+    <main class="quiz-container">
+
+        <!-- اختبار الصف الرابع -->
+        <div id="exam4" class="grade-exam active">
+            <div class="question-card" data-correct="1">
+                <h3>س1: المصدر الرئيسي لمعظم الطاقات على سطح الأرض هو:</h3>
+                <div class="options-list">
+                    <div class="option-item" onclick="selectOption(this, 1)">أ) الشمس</div>
+                    <div class="option-item" onclick="selectOption(this, 2)">ب) القمر</div>
+                    <div class="option-item" onclick="selectOption(this, 3)">ج) الرياح</div>
+                </div>
+            </div>
+            <div class="question-card" data-correct="2">
+                <h3>س2: يعتبر الفحم من أنواع الوقود:</h3>
+                <div class="options-list">
+                    <div class="option-item" onclick="selectOption(this, 1)">أ) الحيوي المتجدد</div>
+                    <div class="option-item" onclick="selectOption(this, 2)">ب) الحفري غير المتجدد</div>
+                    <div class="option-item" onclick="selectOption(this, 3)">ج) النظيف دائماً</div>
+                </div>
+            </div>
+            <button class="submit-btn" onclick="checkQuiz('exam4')">إظهار النتيجة والتصحيح</button>
+            <div class="result-box"></div>
+        </div>
+
+        <!-- اختبار الصف الخامس -->
+        <div id="exam5" class="grade-exam">
+            <div class="question-card" data-correct="3">
+                <h3>س1: يقوم النبات بصنع غذائه في الأوراق من خلال عملية:</h3>
+                <div class="options-list">
+                    <div class="option-item" onclick="selectOption(this, 1)">أ) التنفس</div>
+                    <div class="option-item" onclick="selectOption(this, 2)">ب) الهضم</div>
+                    <div class="option-item" onclick="selectOption(this, 3)">ج) البناء الضوئي</div>
+                </div>
+            </div>
+            <button class="submit-btn" onclick="checkQuiz('exam5')">إظهار النتيجة والتصحيح</button>
+            <div class="result-box"></div>
+        </div>
+
+        <!-- اختبار الصف السادس -->
+        <div id="exam6" class="grade-exam">
+            <div class="question-card" data-correct="2">
+                <h3>س1: الجزء الذي يتواجد في الخلية النباتية ولا يتواجد في الخلية الحيوانية هو:</h3>
+                <div class="options-list">
+                    <div class="option-item" onclick="selectOption(this, 1)">أ) النواة</div>
+                    <div class="option-item" onclick="selectOption(this, 2)">ب) الجدار الخلوي</div>
+                    <div class="option-item" onclick="selectOption(this, 3)">ج) الغشاء الخلوي</div>
+                </div>
+            </div>
+            <button class="submit-btn" onclick="checkQuiz('exam6')">إظهار النتيجة والتصحيح</button>
+            <div class="result-box"></div>
+        </div>
+
+        <!-- اختبار الأول الإعدادي -->
+        <div id="exam1prep" class="grade-exam">
+            <div class="question-card" data-correct="1">
+                <h3>س1: كل ما له كتلة وحجم ويشغل حيزاً من الفراغ يُعرف بـ:</h3>
+                <div class="options-list">
+                    <div class="option-item" onclick="selectOption(this, 1)">أ) المادة</div>
+                    <div class="option-item" onclick="selectOption(this, 2)">ب) الطاقة</div>
+                    <div class="option-item" onclick="selectOption(this, 3)">ج) الكثافة</div>
+                </div>
+            </div>
+            <button class="submit-btn" onclick="checkQuiz('exam1prep')">إظهار النتيجة والتصحيح</button>
+            <div class="result-box"></div>
+        </div>
+
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-right"></i> العودة للصفحة الرئيسية</a>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        function switchGradeExam(examId) {
+            document.querySelectorAll('.grade-exam').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(examId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function selectOption(element, index) {
+            const parent = element.parentElement;
+            parent.querySelectorAll('.option-item').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            element.dataset.value = index;
+        }
+
+        function checkQuiz(examId) {
+            const examContainer = document.getElementById(examId);
+            const questions = examContainer.querySelectorAll('.question-card');
+            let score = 0;
+
+            questions.forEach(q => {
+                const correctVal = parseInt(q.dataset.correct);
+                const selectedOpt = q.querySelector('.option-item.selected');
+                const options = q.querySelectorAll('.option-item');
+
+                options.forEach((opt, idx) => {
+                    opt.classList.remove('correct', 'wrong');
+                    if (idx + 1 === correctVal) {
+                        opt.classList.add('correct');
+                    }
+                });
+
+                if (selectedOpt) {
+                    const userVal = parseInt(selectedOpt.dataset.value);
+                    if (userVal === correctVal) {
+                        score++;
+                    } else {
+                        selectedOpt.classList.add('wrong');
+                    }
+                }
+            });
+
+            const resultBox = examContainer.querySelector('.result-box');
+            resultBox.style.display = 'block';
+            resultBox.innerHTML = `درجتك هي: ${score} من ${questions.length} 🎯`;
+        }
+    </script>
+</body>
+</html>
