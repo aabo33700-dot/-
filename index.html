@@ -138,7 +138,7 @@
         /* شبكة الصفوف الأفقية المتجاورة */
         .grades-horizontal-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 20px;
         }
 
@@ -176,20 +176,23 @@
         .term-title {
             font-weight: bold;
             color: var(--primary);
-            margin: 10px 0 8px 0;
+            margin: 12px 0 8px 0;
             font-size: 1rem;
             border-right: 3px solid var(--accent);
             padding-right: 8px;
         }
         .unit-box {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         .unit-title {
             font-weight: 600;
             color: #4a5568;
             cursor: pointer;
-            padding: 5px 0;
+            padding: 6px 0;
             font-size: 0.95rem;
+        }
+        .unit-title:hover {
+            color: var(--primary);
         }
         .lessons-list {
             display: none;
@@ -201,7 +204,7 @@
             background: #f8fafc;
             padding: 10px 12px;
             border-radius: 6px;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             border: 1px solid #e2e8f0;
         }
         .lesson-name {
@@ -295,12 +298,36 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div id="grade4" class="grade-content">
-                        <div class="term-title"> الفصل الدراسي الأول</div>
+                        <div class="term-title">🗓️ الفصل الدراسي الأول</div>
                         <div class="unit-box">
                             <div class="unit-title" onclick="toggleElement('unit4-1')">📂 الوحدة الأولى: الأنظمة الحية</div>
                             <ul id="unit4-1" class="lessons-list">
                                 <li class="lesson-item">
                                     <div class="lesson-name">📄 الدرس الأول: التكيف والبقاء</div>
+                                    <div class="resource-buttons">
+                                        <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
+                                        <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
+                                        <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
+                                        <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
+                                    </div>
+                                </li>
+                                <li class="lesson-item">
+                                    <div class="lesson-name">📄 الدرس الثاني: كيف تعمل الحواس؟</div>
+                                    <div class="resource-buttons">
+                                        <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
+                                        <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
+                                        <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
+                                        <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="term-title">🗓️ الفصل الدراسي الثاني</div>
+                        <div class="unit-box">
+                            <div class="unit-title" onclick="toggleElement('unit4-2')">📂 الوحدة الثالثة: الطاقة والوقود</div>
+                            <ul id="unit4-2" class="lessons-list">
+                                <li class="lesson-item">
+                                    <div class="lesson-name">📄 الدرس الأول: الأجهزة والطاقة</div>
                                     <div class="resource-buttons">
                                         <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
                                         <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
@@ -320,12 +347,36 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div id="grade5" class="grade-content">
-                        <div class="term-title"> الفصل الدراسي الأول</div>
+                        <div class="term-title">🗓️ الفصل الدراسي الأول</div>
                         <div class="unit-box">
                             <div class="unit-title" onclick="toggleElement('unit5-1')">📂 الوحدة الأولى: العلاقات بين الكائنات</div>
                             <ul id="unit5-1" class="lessons-list">
                                 <li class="lesson-item">
                                     <div class="lesson-name">📄 الدرس الأول: احتياجات النبات</div>
+                                    <div class="resource-buttons">
+                                        <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
+                                        <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
+                                        <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
+                                        <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
+                                    </div>
+                                </li>
+                                <li class="lesson-item">
+                                    <div class="lesson-name">📄 الدرس الثاني: انتقال الطاقة في النظام البيئي</div>
+                                    <div class="resource-buttons">
+                                        <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
+                                        <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
+                                        <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
+                                        <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="term-title">🗓️ الفصل الدراسي الثاني</div>
+                        <div class="unit-box">
+                            <div class="unit-title" onclick="toggleElement('unit5-2')">📂 الوحدة الثالثة: الموارد الطبيعية</div>
+                            <ul id="unit5-2" class="lessons-list">
+                                <li class="lesson-item">
+                                    <div class="lesson-name">📄 الدرس الأول: التفاعلات بين الغلاف الحيوي والمائي</div>
                                     <div class="resource-buttons">
                                         <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
                                         <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
@@ -345,8 +396,21 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div id="grade6" class="grade-content">
-                        <div class="term-title"> الفصل الدراسي الأول</div>
-                        <p style="color:#777; font-size:0.85rem;">سيتم إضافة الوحدات قريباً...</p>
+                        <div class="term-title">🗓️ الفصل الدراسي الأول</div>
+                        <div class="unit-box">
+                            <div class="unit-title" onclick="toggleElement('unit6-1')">📂 الوحدة الأولى: الخلية كنظام</div>
+                            <ul id="unit6-1" class="lessons-list">
+                                <li class="lesson-item">
+                                    <div class="lesson-name">📄 الدرس الأول: الخلية كنظام حيوي</div>
+                                    <div class="resource-buttons">
+                                        <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
+                                        <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
+                                        <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
+                                        <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -368,8 +432,21 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div id="prep1" class="grade-content">
-                        <div class="term-title"> الفصل الدراسي الأول</div>
-                        <p style="color:#777; font-size:0.85rem;">سيتم إضافة الوحدات قريباً...</p>
+                        <div class="term-title">🗓️ الفصل الدراسي الأول</div>
+                        <div class="unit-box">
+                            <div class="unit-title" onclick="toggleElement('prep1-1')">📂 الوحدة الأولى: المادة وتركيبها</div>
+                            <ul id="prep1-1" class="lessons-list">
+                                <li class="lesson-item">
+                                    <div class="lesson-name">📄 الدرس الأول: المادة وخواصها</div>
+                                    <div class="resource-buttons">
+                                        <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
+                                        <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
+                                        <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
+                                        <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -380,8 +457,21 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div id="prep2" class="grade-content">
-                        <div class="term-title"> الفصل الدراسي الأول</div>
-                        <p style="color:#777; font-size:0.85rem;">سيتم إضافة الوحدات قريباً...</p>
+                        <div class="term-title">🗓️ الفصل الدراسي الأول</div>
+                        <div class="unit-box">
+                            <div class="unit-title" onclick="toggleElement('prep2-1')">📂 الوحدة الأولى: دورية العناصر وخواصها</div>
+                            <ul id="prep2-1" class="lessons-list">
+                                <li class="lesson-item">
+                                    <div class="lesson-name">📄 الدرس الأول: محاولات تصنيف العناصر</div>
+                                    <div class="resource-buttons">
+                                        <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
+                                        <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
+                                        <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
+                                        <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -392,8 +482,21 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div id="prep3" class="grade-content">
-                        <div class="term-title"> الفصل الدراسي الأول</div>
-                        <p style="color:#777; font-size:0.85rem;">سيتم إضافة الوحدات قريباً...</p>
+                        <div class="term-title">🗓️ الفصل الدراسي الأول</div>
+                        <div class="unit-box">
+                            <div class="unit-title" onclick="toggleElement('prep3-1')">📂 الوحدة الأولى: القوة والحركة</div>
+                            <ul id="prep3-1" class="lessons-list">
+                                <li class="lesson-item">
+                                    <div class="lesson-name">📄 الدرس الأول: الحركة في اتجاه واحد</div>
+                                    <div class="resource-buttons">
+                                        <a href="summaries.html" class="res-btn btn-summary"><i class="fas fa-book"></i> الملخص</a>
+                                        <a href="exams.html" class="res-btn btn-exam"><i class="fas fa-pen"></i> الاختبار</a>
+                                        <a href="#" class="res-btn btn-bank"><i class="fas fa-question-circle"></i> بنك الأسئلة</a>
+                                        <a href="#" class="res-btn btn-video"><i class="fas fa-video"></i> الشرح</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
